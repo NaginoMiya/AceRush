@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import { DateTime } from "luxon";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -27,46 +27,47 @@ const ColorButton = withStyles((theme) => ({
   },
 }))(Button);
 
-/*
-const useStyles = makeStyles((theme) => ({
-  input: {
-    width: "100%",
-    alignItems: "center",
-    fontSize: "30px",
-  },
-  // Modalのスタイルです.
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    width: "50%",
-  },
-  // IconButtonsのスタイルです.
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-*/
+type Time = {
+  hour: number;
+  minute: number;
+  second: number;
+};
+
+type Props = {
+  setRemainSec: React.Dispatch<React.SetStateAction<number>>;
+  setTargetTime: React.Dispatch<React.SetStateAction<Time>>;
+};
 
 // ToDo: cookieに記録された時間or記録した時間を過ぎてるか未設定ならば現在時刻の12時間後に設定する.
-let options = ["(Now+12):00."];
+let viewOptions: string[] = [];
+let options: DateTime[] = [];
 
-const SetTargetTime: FC = () => {
+const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
+  // 初回リロード時にボタンに表示される時刻を生成、格納
+  useEffect(() => {
+    let date = DateTime.local();
+    if (date.minute < 30) {
+      date = date.set({ minute: 30 });
+    } else {
+      date = date.set({ minute: 0 });
+      date = date.set({ hour: (date.hour + 1) % 24 });
+    }
+    viewOptions.push(`${date.hour}:${date.minute}`);
+    options.push(date);
+  }, []);
+
   // const classes = useStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleClick = () => {
-    // console.info(`You clicked ${options[selectedIndex]}`);
+    //    console.info(`You clicked ${viewOptions[selectedIndex]}`);
+    const tmp = viewOptions[selectedIndex].split(":");
+    setTargetTime({ hour: Number(tmp[0]), minute: Number(tmp[1]), second: 0 });
+    setRemainSec(
+      options[selectedIndex].diff(DateTime.local(), "second").seconds
+    );
   };
 
   const handleMenuItemClick = (
@@ -79,17 +80,27 @@ const SetTargetTime: FC = () => {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+    viewOptions = [];
     options = [];
     let { hour, minute } = DateTime.local();
+
+    let tmpDate = DateTime.local();
+
     if (minute > 30) {
       minute = 1;
+      hour = (hour + 1) % 24;
+      tmpDate = tmpDate.set({ minute: 0 });
+      tmpDate = tmpDate.set({ hour });
     } else {
       minute = 0;
+      tmpDate = tmpDate.set({ minute: 30 });
     }
     for (let i = 0; i <= 24; i += 1) {
-      options.push(`${hour % 24}:${minute % 2 ? "00" : "30"}`);
-      hour += 1;
+      viewOptions.push(`${hour % 24}:${minute % 2 ? "00" : "30"}`);
+      if (minute % 2 === 0) hour += 1;
       minute += 1;
+      options.push(tmpDate);
+      tmpDate = tmpDate.plus({ minute: 30 });
     }
   };
 
@@ -114,7 +125,7 @@ const SetTargetTime: FC = () => {
           aria-label="split button"
         >
           <ColorButton onClick={handleClick}>
-            {options[selectedIndex]}
+            {viewOptions[selectedIndex]}
           </ColorButton>
           <ColorButton
             aria-label="delete"
@@ -147,7 +158,7 @@ const SetTargetTime: FC = () => {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList id="split-button-menu">
-                    {options.map((option, index) => (
+                    {viewOptions.map((option, index) => (
                       <MenuItem
                         key={option}
                         selected={index === selectedIndex}
@@ -167,4 +178,4 @@ const SetTargetTime: FC = () => {
   );
 };
 
-export default SetTargetTime;
+export default SetTargetTimeButton;

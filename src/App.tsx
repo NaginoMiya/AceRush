@@ -1,6 +1,7 @@
 import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
-import SetTargetTimeButton from "./ChangeTheme";
+import ChangeTheme from "./ChangeTheme";
+import SetTargetTime from "./SetTargetTime";
 
 const App: FC = () => {
   const limitTime = 1.5;
@@ -9,13 +10,20 @@ const App: FC = () => {
 
   // 30分刻みのほうがいいかも
   const [timeLeft, setTimeLeft] = useState<number>(limitTime * 60 * 60);
+  const [nowTime, setNowTime] = useState(DateTime.local());
   const tick = (): void => setTimeLeft((t) => t - 1);
+
+  const process = () => {
+    tick();
+    setNowTime(nowTime.plus({ second: 1 }));
+  };
+
   useEffect(() => {
-    const timerId = setInterval(tick, 1000);
+    const timerId = setInterval(process, 1000);
     // const timerId = setInterval(DateTime.local(), 1000);
 
     return () => clearInterval(timerId);
-  }, []);
+  });
 
   return (
     <>
@@ -44,6 +52,7 @@ const App: FC = () => {
           {DateTime.local().second}
         </h3>
       </main>
+      <SetTargetTime />
     </>
   );
 };

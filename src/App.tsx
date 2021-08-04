@@ -27,14 +27,31 @@ const App: FC = () => {
 
   return (
     <>
-      <h1>
-        {Math.floor((timeLeft % 1800) / 60)}:{Math.floor(timeLeft % 1800) % 60}
-      </h1>
-      <h1>目標の時間xまで、あと{Math.floor(timeLeft / 1800)}回.</h1>
-      <h1>
-        {nowTime.hour} : {nowTime.minute} : {nowTime.second}
-      </h1>
-      <ChangeTheme isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <header>
+        <div className="logo">
+          <p>AceRush</p>
+        </div>
+        <nav>
+          <ul>
+            <li><p>theme</p></li>
+            <li><SetTargetTimeButton
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+            /></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h2>目標の時間xまで</h2>
+        <h2>あと{Math.floor(timeLeft / 1800)}回.</h2>
+        <h1>
+          {Math.floor((timeLeft % 1800) / 60)}:{Math.floor(timeLeft % 1800) % 60}
+        </h1>
+        <h3>
+          {DateTime.local().hour} : {DateTime.local().minute} :{" "}
+          {DateTime.local().second}
+        </h3>
+      </main>
       <SetTargetTime />
     </>
   );

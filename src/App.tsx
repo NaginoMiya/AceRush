@@ -42,8 +42,10 @@ const App: FC = () => {
     });
   }, []);
 
+  const [theme, setTheme] = useState("rockn-roll");
+
   return (
-    <>
+    <div className={theme}>
       <header>
         <div className="logo">
           <p>AceRush</p>
@@ -85,7 +87,15 @@ const App: FC = () => {
           {DateTime.local().second}
         </h3>
       </main>
-    </>
+      <button
+        type="button"
+        onClick={() => {
+          setTheme("game");
+        }}
+      >
+        change
+      </button>
+    </div>
   );
 };
 

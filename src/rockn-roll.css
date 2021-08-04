@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 
-html {
+.rockn-roll html {
   background-color: #f0f0f0;
   max-height: 100%;
   
@@ -15,79 +15,79 @@ body {
   
 }
 
-code {
+.rockn-roll code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 /* main */
-main {
+.rockn-roll main {
   text-align: center;
   margin: auto 0 auto auto;
   display: block;
 }
 
-main h1,h2,h3 {
+.rockn-roll main h1,h2,h3 {
   margin: auto;
 }
 
-main h1 {
+.rockn-roll main h1 {
   font-size: 28vw;
   color: #212121;
 }
 
-main h2 {
+.rockn-roll main h2 {
   font-size: 1.5rem;
   color: #b3b3b3;
 }
 
-main .remaining-text {
+.rockn-roll main .remaining-text {
   display: flex;
 }
 
-main h3 {
+.rockn-roll main h3 {
   font-size: 1.7rem;
   color: #b3b3b3;
 }
 
-main .remaining{
+.rockn-roll main .remaining{
   font-size: 8vh;
   color: #f02648;
 }
 
 @media screen and (min-width: 721px) {
-  main h1 {
+  .rockn-roll main h1 {
     font-size: 25vw;
   }
-  main h2 {
+  .rockn-roll main h2 {
     font-size: 4rem;
   }
 
-  main .remaining{
+  .rockn-roll main .remaining{
     font-size: 10vh;
   }
 }
 
 /* header */
-header p, li, ul{
+.rockn-roll header p, li, ul{
   margin: 0;
   padding: 0;
 }
 
-header {
+.rockn-roll header {
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-header .logo {
+.rockn-roll header .logo {
   padding: 8px;
   font-size: 50px;
 }
 
 @media screen and (min-width: 721px) {
-  header {
+  .rockn-roll header {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
@@ -95,21 +95,21 @@ header .logo {
 }
 
 /* nav */
-nav {
+.rockn-roll nav {
   display: none;
 }
 
-nav * {
+.rockn-roll nav * {
   display: flex;
 }
 
 @media screen and (min-width: 721px) {
-  nav {
+  .rockn-roll nav {
     display: 1 1 flex;
     display: block;
   }
 
-  nav li {
+  .rockn-roll nav li {
     align-items: center;
     float: left;
     list-style-type: none;

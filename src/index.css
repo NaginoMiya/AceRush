@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kosugi&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Kosugi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +11,67 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* main */
+main {
+  text-align: center;
+  margin: auto 0 auto auto;
+  display: block;
+}
+
+main h1,h2,h3 {
+  margin: auto;
+}
+
+main h1 {
+  font-size: 30vw;
+}
+
+main h2 {
+  font-size: 1.8rem;
+}
+
+main h3 {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 721px) {
+  main h1 {
+    font-size: 30vw;
+  }
+  main h2 {
+    font-size: 4rem;
+  }
+}
+
+/* header */
+header p, li, ul{
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 721px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* nav */
+nav {
+  display: none;
+}
+
+@media screen and (min-width: 721px) {
+  nav {
+    display: 1 1 flex;
+    display: block;
+  }
+
+  nav li {
+    float: left;
+    list-style-type: none;
+  }
 }

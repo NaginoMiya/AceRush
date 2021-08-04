@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
-html {
+.game html {
   background-color: #3b3bad;
   max-height: 100%;
 }
@@ -13,80 +13,80 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+.game code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 /* main */
-main {
+.game main {
   text-align: center;
   margin: auto 0 auto auto;
   display: block;
 }
 
-main h1,h2,h3 {
+.game main h1,h2,h3 {
   margin: auto;
 }
 
-main h1 {
+.game main h1 {
   font-size: 30vw;
   color: #f5f5f5
 }
 
-main h2 {
+.game main h2 {
   font-size: 1.5rem;
   color: #b3b3b3;
 }
 
-main .remaining-text {
+.game main .remaining-text {
   display: flex;
 }
 
-main h3 {
+.game main h3 {
   font-size: 1.7rem;
   color: #b3b3b3;
 }
 
-main .remaining{
+.game main .remaining{
   font-size: 8vh;
   color: #f02648;
 }
 
 @media screen and (min-width: 721px) {
-  main h1 {
+  .game main h1 {
     font-size: 27vw;
   }
-  main h2 {
+  .game main h2 {
     font-size: 4rem;
   }
 
-  main .remaining{
+  .game main .remaining{
     font-size: 10vh;
   }
 }
 
 /* header */
-header p, li, ul{
+.game header p, li, ul{
   margin: 0;
   padding: 0;
 }
 
-header {
+.game header {
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-header .logo {
+.game header .logo {
   padding: 8px;
   font-size: 50px;
   color: #f5f5f5;
 }
 
 @media screen and (min-width: 721px) {
-  header {
+  .game header {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
@@ -94,21 +94,21 @@ header .logo {
 }
 
 /* nav */
-nav {
+.game nav {
   display: none;
 }
 
-nav * {
+.game nav * {
   display: flex;
 }
 
 @media screen and (min-width: 721px) {
-  nav {
+  .game nav {
     display: 1 1 flex;
     display: block;
   }
 
-  nav li {
+  .game nav li {
     align-items: center;
     float: left;
     list-style-type: none;

@@ -51,9 +51,16 @@ header p, li, ul{
   padding: 0;
 }
 
+header {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 721px) {
   header {
-    display: flex;
+    padding: 10px;
     justify-content: space-between;
     align-items: center;
   }
@@ -64,6 +71,10 @@ nav {
   display: none;
 }
 
+nav * {
+  display: flex;
+}
+
 @media screen and (min-width: 721px) {
   nav {
     display: 1 1 flex;
@@ -71,6 +82,7 @@ nav {
   }
 
   nav li {
+    align-items: center;
     float: left;
     list-style-type: none;
   }

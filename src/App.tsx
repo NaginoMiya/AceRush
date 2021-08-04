@@ -34,7 +34,7 @@ const App: FC = () => {
         <nav>
           <ul>
             <li>
-              <p>theme</p>
+              <SetTargetTime />
             </li>
             <li>
               <ChangeTheme
@@ -57,7 +57,6 @@ const App: FC = () => {
           {DateTime.local().second}
         </h3>
       </main>
-      <SetTargetTime />
     </>
   );
 };

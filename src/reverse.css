@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi&display=swap');
 
 html {
-  background-color: #f0f0f0;
+  background-color: #212121;
   max-height: 100%;
 }
 
@@ -31,12 +31,12 @@ main h1,h2,h3 {
 
 main h1 {
   font-size: 30vw;
-  color: #212121;
+  color: #ededed;
 }
 
 main h2 {
   font-size: 1.5rem;
-  color: #b3b3b3;
+  color: #b5b5b5;
 }
 
 main .remaining-text {
@@ -45,7 +45,7 @@ main .remaining-text {
 
 main h3 {
   font-size: 1.7rem;
-  color: #b3b3b3;
+  color: #b5b5b5;
 }
 
 main .remaining{

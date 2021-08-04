@@ -54,7 +54,10 @@ const App: FC = () => {
         <nav>
           <ul>
             <li>
-              <p>theme</p>
+              <SetTargetTimeButton
+                setRemainSec={setRemainSec}
+                setTargetTime={setTargetTime}
+              />
             </li>
             <li>
               <ChangeTheme
@@ -65,12 +68,11 @@ const App: FC = () => {
           </ul>
         </nav>
       </header>
-      <main>
-        <h2>
-          目標の時間{targetTime.hour}:{Math.floor(targetTime.minute / 30) * 30}
-          まで
-        </h2>
-        <h2>あと{Math.floor(remainSec / 1800) + 1}回.</h2>
+      <main className="background">
+        <div className="remaining-text">
+          <h2>目標の時間{targetTime.hour}:{Math.floor(targetTime.minute / 30) * 30}まであと
+            <span className="remaining">{Math.floor(remainSec / 1800) + 1}</span>回!</h2>
+        </div>
         <h1>
           {Math.floor((remainSec % 1800) / 60)}:
           {Math.floor(remainSec % 1800) % 60}
@@ -80,10 +82,6 @@ const App: FC = () => {
           {DateTime.local().second}
         </h3>
       </main>
-      <SetTargetTimeButton
-        setRemainSec={setRemainSec}
-        setTargetTime={setTargetTime}
-      />
     </>
   );
 };

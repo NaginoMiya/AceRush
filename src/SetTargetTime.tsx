@@ -66,7 +66,7 @@ const SetTargetTime: FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    // console.info(`You clicked ${options[selectedIndex]}`);
   };
 
   const handleMenuItemClick = (

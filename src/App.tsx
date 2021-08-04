@@ -45,7 +45,7 @@ const App: FC = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="background">
         <div className="remaining-text">
           <h2>目標の時間20:00まであと<span className="remaining">{Math.floor(timeLeft / 1800)}</span>回!</h2>
         </div>

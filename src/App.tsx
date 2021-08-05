@@ -2,6 +2,7 @@ import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
 import ChangeTheme from "./ChangeTheme";
 import SetTargetTime from "./SetTargetTime";
+import Logo from "./test6.png";
 
 const App: FC = () => {
   const limitTime = 1.5;
@@ -29,7 +30,7 @@ const App: FC = () => {
     <>
       <header>
         <div className="logo">
-          <p>AceRush</p>
+          <img src={Logo} alt="test6.png" width="300" height="200"/>
         </div>
         <nav>
           <ul>

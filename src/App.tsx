@@ -21,16 +21,6 @@ const App: FC = () => {
 
   const [theme, setTheme] = useState("");
 
-  const changeTheme = () => {
-    if (theme === "rockn-roll") {
-      setTheme("game");
-      localStorage.setItem("myTheme", "game");
-    } else {
-      setTheme("rockn-roll");
-      localStorage.setItem("myTheme", "rockn-roll");
-    }
-  };
-
   // 30分刻みのほうがいいかも
   const tick = (): void => {
     setRemainSec((t) => t - 1);
@@ -143,11 +133,8 @@ const App: FC = () => {
           {zeroPadding(DateTime.local().second)}
         </h3>
       </main>
-      <button type="button" onClick={changeTheme}>
-        change
-      </button>
       <footer>
-        <p>AceRushは24時間を30分単位であと何回あるか可視化できるアプリです. 1時間だと長く感じるけど、30分だと短く感じるし思ったより回数がないよね. </p>
+        <p>AceRushは目的の時間まで30分単位であと何回あるか可視化できるアプリです. 1時間だと長く感じるけど、30分だと短く感じるし思ったより回数が少ないよね. </p>
         <p>made by <a href="https://github.com/NagiNoMiya">@NagiNoMiya</a></p>
       </footer>
     </div>

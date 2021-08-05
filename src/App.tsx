@@ -101,6 +101,10 @@ const App: FC = () => {
       <button type="button" onClick={changeTheme}>
         change
       </button>
+      <footer>
+        <p>AceRushは24時間を30分単位であと何回あるか可視化できるアプリです. 1時間だと長く感じるけど、30分だと短く感じるし思ったより回数がないよね. </p>
+        <p>made by <a href="https://github.com/NagiNoMiya">@NagiNoMiya</a></p>
+      </footer>
     </div>
   );
 };

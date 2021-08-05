@@ -13,8 +13,21 @@ nav ul li {
     padding: 0 8px;
 }
 
-.menu-list-wraper {
-    display: block;
+.smartphone-nav>*{
+    display: inline-block;
+    margin:30px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.smartphone-nav>*>* {
+    margin: 20px 0;
+}
+
+@media screen and (min-width: 1024px) {
+    .smartphone-nav {
+        display: none;
+    }
 }
 
 /* rock */
@@ -66,7 +79,7 @@ nav ul li {
   color: #f02648;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .rock main h1 {
     font-size: 25vw;
   }
@@ -97,7 +110,7 @@ nav ul li {
   font-size: 50px;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .rock header {
     padding: 10px;
     justify-content: space-between;
@@ -114,7 +127,7 @@ nav ul li {
   display: flex;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .rock nav {
     display: 1 1 flex;
     display: block;
@@ -137,7 +150,7 @@ nav ul li {
     color: #b3b3b3;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
     .rock footer p, a{
         font-size: 1rem;
   }
@@ -190,7 +203,7 @@ nav ul li {
   color: #f02648;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .game main h1 {
     font-size: 27vw;
   }
@@ -222,7 +235,7 @@ nav ul li {
   color: #f5f5f5;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .game header {
     padding: 10px;
     justify-content: space-between;
@@ -239,7 +252,7 @@ nav ul li {
   display: flex;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .game nav {
     display: 1 1 flex;
     display: block;
@@ -262,7 +275,7 @@ nav ul li {
     color: #b3b3b3;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
     .game footer p, a{
         font-size: 1rem;
   }
@@ -314,7 +327,7 @@ nav ul li {
   color: #f02648;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .normal main h1 {
     font-size: 27vw;
   }
@@ -341,11 +354,11 @@ nav ul li {
 }
 
 .normal header .logo {
-  padding: 8px;
+  padding: 6px;
   font-size: 50px;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .normal header {
     padding: 10px;
     justify-content: space-between;
@@ -362,7 +375,7 @@ nav ul li {
   display: flex;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .normal nav {
     display: 1 1 flex;
     display: block;
@@ -385,7 +398,7 @@ nav ul li {
     color: #b3b3b3;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
     .normal footer p, a{
         font-size: 1rem;
   }
@@ -437,7 +450,7 @@ nav ul li {
   color: #f02648;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .reverse main h1 {
     font-size: 27vw;
   }
@@ -464,11 +477,11 @@ nav ul li {
 }
 
 .reverse header .logo {
-  padding: 8px;
+  padding: 6px;
   font-size: 50px;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .reverse header {
     padding: 10px;
     justify-content: space-between;
@@ -485,7 +498,7 @@ nav ul li {
   display: flex;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
   .reverse nav {
     display: 1 1 flex;
     display: block;
@@ -508,7 +521,7 @@ nav ul li {
     color: #b3b3b3;
 }
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 1024px) {
     .reverse footer p, a{
         font-size: 1rem;
   }

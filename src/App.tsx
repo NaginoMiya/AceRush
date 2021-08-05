@@ -2,6 +2,7 @@ import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
 import ChangeThemeButton from "./ChangeThemeButton";
 import SetTargetTimeButton from "./SetTargetTimeButton";
+import Logo from "./test6.png"
 
 type Time = {
   hour: number;
@@ -20,7 +21,6 @@ const App: FC = () => {
   );
 
   const [theme, setTheme] = useState("");
-
   const tick = (): void => {
     setRemainSec((t) => t - 1);
     if (remainSec < 0) {
@@ -106,7 +106,7 @@ const App: FC = () => {
     <div className={theme}>
       <header>
         <div className="logo">
-          <p>AceRush</p>
+          <p><img src={Logo} alt="test6.png" width="90" height="60"/></p>
         </div>
         <nav>
           <ul>
@@ -143,6 +143,19 @@ const App: FC = () => {
           {zeroPadding(DateTime.local().second)}
         </h3>
       </main>
+      <div className="smartphone-nav">
+        <ul>
+          <li>
+            <SetTargetTimeButton
+              setRemainSec={setRemainSec}
+              setTargetTime={setTargetTime}
+            />
+          </li>
+          <li>
+            <ChangeThemeButton setTheme={setTheme} />
+          </li>
+        </ul>
+      </div>
       <footer>
         <p>
           AceRushは目的の時間まで30分単位であと何回あるか可視化できるアプリです.

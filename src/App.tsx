@@ -2,7 +2,7 @@ import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
 import ChangeThemeButton from "./ChangeThemeButton";
 import SetTargetTimeButton from "./SetTargetTimeButton";
-import Logo from "./test6.png"
+import Logo from "./acerush.png";
 
 type Time = {
   hour: number;

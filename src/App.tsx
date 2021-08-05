@@ -1,6 +1,6 @@
 import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
-import ChangeTheme from "./ChangeTheme";
+import ChangeTheme from "./ChangeThemeButton";
 import SetTargetTimeButton from "./SetTargetTimeButton";
 
 type Time = {
@@ -21,6 +21,18 @@ const App: FC = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [theme, setTheme] = useState("");
+
+  const changeTheme = () => {
+    if (theme === "rockn-roll") {
+      setTheme("game");
+      localStorage.setItem("myTheme", "game");
+    } else {
+      setTheme("rockn-roll");
+      localStorage.setItem("myTheme", "rockn-roll");
+    }
+  };
+
   // 30分刻みのほうがいいかも
   const tick = (): void => {
     setRemainSec((t) => t - 1);
@@ -40,9 +52,8 @@ const App: FC = () => {
       minute: minute < 30 ? 30 : 0,
       second: 0,
     });
+    setTheme(localStorage.getItem("myTheme") ?? "rockn-roll");
   }, []);
-
-  const [theme, setTheme] = useState("rockn-roll");
 
   return (
     <div className={theme}>
@@ -87,12 +98,7 @@ const App: FC = () => {
           {DateTime.local().second}
         </h3>
       </main>
-      <button
-        type="button"
-        onClick={() => {
-          setTheme("reverse");
-        }}
-      >
+      <button type="button" onClick={changeTheme}>
         change
       </button>
     </div>

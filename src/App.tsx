@@ -50,7 +50,7 @@ const App: FC = () => {
       minute: minute < 30 ? 30 : 0,
       second: 0,
     });
-    setTheme(localStorage.getItem("myTheme") ?? "rockn-roll");
+    setTheme(localStorage.getItem("myTheme") ?? "normal");
 
     const dateString = localStorage.getItem("myTargetTime");
     if (dateString !== null) {
@@ -157,8 +157,13 @@ const App: FC = () => {
         </ul>
       </div>
       <footer>
-        <p>AceRushは目的の時間まで30分単位であと何回あるか可視化できるアプリです. 1時間だと長く感じるけど、30分だと短く感じるし思ったより回数が少ないよね. </p>
-        <p>made by <a href="https://github.com/NagiNoMiya">@NagiNoMiya</a></p>
+        <p>
+          AceRushは目的の時間まで30分単位であと何回あるか可視化できるアプリです.
+          1時間だと長く感じるけど、30分だと短く感じるし思ったより回数が少ないよね.{" "}
+        </p>
+        <p>
+          made by <a href="https://github.com/NagiNoMiya">@NagiNoMiya</a>
+        </p>
       </footer>
     </div>
   );

@@ -10,15 +10,15 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { withStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
+import { grey } from "@material-ui/core/colors";
 
 const ColorButton = withStyles((theme) => ({
   root: {
     width: "80%",
-    color: theme.palette.getContrastText(green[500]),
-    backgroundColor: green[500],
+    color: theme.palette.getContrastText(grey[800]),
+    backgroundColor: grey[800],
     "&:hover": {
-      backgroundColor: green[700],
+      backgroundColor: grey[900],
     },
     "& > *": {
       color: "#fffafa",

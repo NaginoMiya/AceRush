@@ -21,9 +21,28 @@ const App: FC = () => {
 
   const [theme, setTheme] = useState("");
 
-  // 30分刻みのほうがいいかも
+  const changeTheme = () => {
+    if (theme === "rockn-roll") {
+      setTheme("game");
+      localStorage.setItem("myTheme", "game");
+    } else {
+      setTheme("rockn-roll");
+      localStorage.setItem("myTheme", "rockn-roll");
+    }
+  };
   const tick = (): void => {
     setRemainSec((t) => t - 1);
+    if (remainSec < 0) {
+      // 時間切れの場合：6時間後にセット
+      setRemainSec(
+        21600 - DateTime.local().minute * 60 - DateTime.local().second
+      );
+      setTargetTime({
+        hour: Math.floor((DateTime.local().hour + 6) % 24),
+        minute: DateTime.local().minute < 30 ? 30 : 0,
+        second: 0,
+      });
+    }
   };
 
   useEffect(() => {

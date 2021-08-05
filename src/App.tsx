@@ -96,6 +96,14 @@ const App: FC = () => {
     }
   }, []);
 
+  // 0パディング用
+  const zeroPadding = (n: number): string => {
+    let s = `${n}`;
+    if (s.length < 2) s = `0${s}`;
+
+    return s;
+  };
+
   return (
     <div className={theme}>
       <header>
@@ -123,7 +131,7 @@ const App: FC = () => {
         <div className="remaining-text">
           <h2>
             目標の時間{targetTime.hour}:
-            {Math.floor(targetTime.minute / 30) * 30}まであと
+            {zeroPadding(Math.floor(targetTime.minute / 30) * 30)}まであと
             <span className="remaining">
               {Math.floor(remainSec / 1800) + 1}
             </span>
@@ -131,12 +139,13 @@ const App: FC = () => {
           </h2>
         </div>
         <h1>
-          {Math.floor((remainSec % 1800) / 60)}:
-          {Math.floor(remainSec % 1800) % 60}
+          {zeroPadding(Math.floor((remainSec % 1800) / 60))}:
+          {zeroPadding(Math.floor(remainSec % 1800) % 60)}
         </h1>
         <h3>
-          {DateTime.local().hour} : {DateTime.local().minute} :{" "}
-          {DateTime.local().second}
+          {zeroPadding(DateTime.local().hour)} :{" "}
+          {zeroPadding(DateTime.local().minute)} :{" "}
+          {zeroPadding(DateTime.local().second)}
         </h3>
       </main>
       <button type="button" onClick={changeTheme}>

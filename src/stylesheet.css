@@ -13,9 +13,9 @@ nav ul li {
     padding: 0 8px;
 }
 
-/* rockn-roll */
+/* rock */
 
-.rockn-roll {
+.rock {
   height: 100%;
   min-height: 100vh;
   background-color: #ffffff;
@@ -27,74 +27,74 @@ nav ul li {
 }
 
 /* main */
-.rockn-roll main {
+.rock main {
   max-height: 100%;
   text-align: center;
   margin: auto 0 auto auto;
   display: block;
 }
 
-.rockn-roll main h1,h2,h3 {
+.rock main h1,h2,h3 {
   margin: auto;
 }
 
-.rockn-roll main h1 {
+.rock main h1 {
   font-size: 28vw;
   color: #212121;
 }
 
-.rockn-roll main h2 {
+.rock main h2 {
   font-size: 1.5rem;
   color: #b3b3b3;
 }
 
-.rockn-roll main .remaining-text {
+.rock main .remaining-text {
   display: flex;
 }
 
-.rockn-roll main h3 {
+.rock main h3 {
   font-size: 1.7rem;
   color: #b3b3b3;
 }
 
-.rockn-roll main .remaining{
+.rock main .remaining{
   font-size: 8vh;
   color: #f02648;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll main h1 {
+  .rock main h1 {
     font-size: 25vw;
   }
-  .rockn-roll main h2 {
+  .rock main h2 {
     font-size: 4rem;
   }
 
-  .rockn-roll main .remaining{
+  .rock main .remaining{
     font-size: 10vh;
   }
 }
 
 /* header */
-.rockn-roll header p, li, ul{
+.rock header p, li, ul{
   margin: 0;
   padding: 0;
 }
 
-.rockn-roll header {
+.rock header {
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rockn-roll header .logo {
+.rock header .logo {
   padding: 8px;
   font-size: 50px;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll header {
+  .rock header {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
@@ -102,39 +102,39 @@ nav ul li {
 }
 
 /* nav */
-.rockn-roll nav {
+.rock nav {
   display: none;
 }
 
-.rockn-roll nav * {
+.rock nav * {
   display: flex;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll nav {
+  .rock nav {
     display: 1 1 flex;
     display: block;
   }
 
-  .rockn-roll nav li {
+  .rock nav li {
     align-items: center;
     float: left;
     list-style-type: none;
   }
 }
 
-.rockn-roll footer{
+.rock footer{
     padding-top: 30px;
 }
 
-.rockn-roll footer p, a {
+.rock footer p, a {
     font-size: 0.8rem;
     text-align: center;
     color: #b3b3b3;
 }
 
 @media screen and (min-width: 721px) {
-    .rockn-roll footer p, a{
+    .rock footer p, a{
         font-size: 1rem;
   }
 }

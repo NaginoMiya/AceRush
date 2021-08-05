@@ -15,6 +15,7 @@ import { green } from "@material-ui/core/colors";
 const ColorButton = withStyles((theme) => ({
   root: {
     width: "80%",
+    display: "flex",
     color: theme.palette.getContrastText(green[500]),
     backgroundColor: green[500],
     "&:hover": {
@@ -30,7 +31,7 @@ type Props = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const themeOptions: string[] = ["normal", "reverse", "rockn-roll", "game"];
+const themeOptions: string[] = ["normal", "reverse", "rock", "game"];
 
 const ChangeThemeButton: FC<Props> = ({ setTheme }) => {
   const [open, setOpen] = useState(false);

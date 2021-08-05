@@ -96,7 +96,7 @@ const App: FC = () => {
     <div className={theme}>
       <header>
         <div className="logo">
-          <p>AceRush</p>
+          <img src={Logo} alt="test6.png" width="300" height="200"/>
         </div>
         <nav>
           <ul>

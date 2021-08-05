@@ -38,6 +38,14 @@ type Props = {
   setTargetTime: React.Dispatch<React.SetStateAction<Time>>;
 };
 
+// 0パディング用
+const zeroPadding = (n: number): string => {
+  let s = `${n}`;
+  if (s.length < 2) s = `0${s}`;
+
+  return s;
+};
+
 // ToDo: cookieに記録された時間or記録した時間を過ぎてるか未設定ならば現在時刻の12時間後に設定する.
 let viewOptions: string[] = [];
 let options: DateTime[] = [];
@@ -52,7 +60,7 @@ const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
       date = date.set({ minute: 0 });
       date = date.set({ hour: (date.hour + 1) % 24 });
     }
-    viewOptions.push(`${date.hour}:${date.minute}`);
+    viewOptions.push(`${zeroPadding(date.hour)}:${zeroPadding(date.minute)}`);
     options.push(date);
   }, []);
 
@@ -63,9 +71,9 @@ const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
 
   const handleClick = () => {
     //    console.info(`You clicked ${viewOptions[selectedIndex]}`);
-    const tmp = viewOptions[selectedIndex].split(":");
-    setTargetTime({ hour: Number(tmp[0]), minute: Number(tmp[1]), second: 0 });
+    // const tmp = viewOptions[selectedIndex].split(":");
     const date = options[selectedIndex];
+    setTargetTime({ hour: date.hour, minute: date.minute, second: 0 });
     localStorage.setItem(
       "myTargetTime",
       `${date.month}:${date.day}:${date.hour}:${date.minute}:${0}`
@@ -102,7 +110,7 @@ const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
       tmpDate = tmpDate.set({ minute: 30 });
     }
     for (let i = 0; i <= 24; i += 1) {
-      viewOptions.push(`${hour % 24}:${minute % 2 ? "00" : "30"}`);
+      viewOptions.push(`${zeroPadding(hour % 24)}:${minute % 2 ? "00" : "30"}`);
       if (minute % 2 === 0) hour += 1;
       minute += 1;
       options.push(tmpDate);

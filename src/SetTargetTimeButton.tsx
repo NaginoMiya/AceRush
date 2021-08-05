@@ -65,6 +65,12 @@ const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
     //    console.info(`You clicked ${viewOptions[selectedIndex]}`);
     const tmp = viewOptions[selectedIndex].split(":");
     setTargetTime({ hour: Number(tmp[0]), minute: Number(tmp[1]), second: 0 });
+    const date = options[selectedIndex];
+    localStorage.setItem(
+      "myTargetTime",
+      `${date.month}:${date.day}:${date.hour}:${date.minute}:${0}`
+    );
+    console.log(localStorage.getItem("myTargetTime"));
     setRemainSec(
       options[selectedIndex].diff(DateTime.local(), "second").seconds
     );

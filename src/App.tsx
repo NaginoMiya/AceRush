@@ -53,6 +53,47 @@ const App: FC = () => {
       second: 0,
     });
     setTheme(localStorage.getItem("myTheme") ?? "rockn-roll");
+
+    const dateString = localStorage.getItem("myTargetTime");
+    if (dateString !== null) {
+      const tmp = dateString.split(":");
+      const date = DateTime.local().set({
+        month: Number(tmp[0]),
+        day: Number(tmp[1]),
+        hour: Number(tmp[2]),
+        minute: Number(tmp[3]),
+        second: Number(tmp[4]),
+      });
+      const diffSec = date.diff(DateTime.local(), "second").seconds;
+      if (diffSec >= 0) {
+        setRemainSec(diffSec);
+        setTargetTime({
+          hour: Number(tmp[2]),
+          minute: Number(tmp[3]),
+          second: 0,
+        });
+      } else {
+        // 期限切れの場合：6時間後にセット
+        setRemainSec(
+          21600 - DateTime.local().minute * 60 - DateTime.local().second
+        );
+        setTargetTime({
+          hour: Math.floor((hour + 6) % 24),
+          minute: minute < 30 ? 30 : 0,
+          second: 0,
+        });
+      }
+    } else {
+      // 初接続の場合：6時間後にセット
+      setRemainSec(
+        21600 - DateTime.local().minute * 60 - DateTime.local().second
+      );
+      setTargetTime({
+        hour: Math.floor((hour + 6) % 24),
+        minute: minute < 30 ? 30 : 0,
+        second: 0,
+      });
+    }
   }, []);
 
   return (

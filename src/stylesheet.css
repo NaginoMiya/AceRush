@@ -1,12 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=DotGothic16&family=Kosugi&display=swap');
 
 html {
     height: 100%;
 }
 
-.rockn-roll {
-  background-color: #f0f0f0;
-  max-height: 100%;
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+}
+
+nav ul li {
+    padding: 0 8px;
+}
+
+.menu-list-wraper {
+    display: block;
+}
+
+/* rock */
+
+.rock {
+  height: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
   font-family: 'RocknRoll One', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,79 +30,75 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.rockn-roll code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 /* main */
-.rockn-roll main {
+.rock main {
+  max-height: 100%;
   text-align: center;
   margin: auto 0 auto auto;
   display: block;
 }
 
-.rockn-roll main h1,h2,h3 {
+.rock main h1,h2,h3 {
   margin: auto;
 }
 
-.rockn-roll main h1 {
+.rock main h1 {
   font-size: 28vw;
   color: #212121;
 }
 
-.rockn-roll main h2 {
+.rock main h2 {
   font-size: 1.5rem;
   color: #b3b3b3;
 }
 
-.rockn-roll main .remaining-text {
+.rock main .remaining-text {
   display: flex;
 }
 
-.rockn-roll main h3 {
+.rock main h3 {
   font-size: 1.7rem;
   color: #b3b3b3;
 }
 
-.rockn-roll main .remaining{
+.rock main .remaining{
   font-size: 8vh;
   color: #f02648;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll main h1 {
+  .rock main h1 {
     font-size: 25vw;
   }
-  .rockn-roll main h2 {
+  .rock main h2 {
     font-size: 4rem;
   }
 
-  .rockn-roll main .remaining{
+  .rock main .remaining{
     font-size: 10vh;
   }
 }
 
 /* header */
-.rockn-roll header p, li, ul{
+.rock header p, li, ul{
   margin: 0;
   padding: 0;
 }
 
-.rockn-roll header {
+.rock header {
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rockn-roll header .logo {
+.rock header .logo {
   padding: 8px;
   font-size: 50px;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll header {
+  .rock header {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
@@ -94,40 +106,53 @@ html {
 }
 
 /* nav */
-.rockn-roll nav {
+.rock nav {
   display: none;
 }
 
-.rockn-roll nav * {
+.rock nav div {
   display: flex;
 }
 
 @media screen and (min-width: 721px) {
-  .rockn-roll nav {
+  .rock nav {
     display: 1 1 flex;
     display: block;
   }
 
-  .rockn-roll nav li {
+  .rock nav>ul>li {
     align-items: center;
     float: left;
     list-style-type: none;
   }
 }
 
+.rock footer{
+    padding-top: 30px;
+}
+
+.rock footer p, a {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+@media screen and (min-width: 721px) {
+    .rock footer p, a{
+        font-size: 1rem;
+  }
+}
+
+/* game */
+
 .game {
   background-color: #3b3bad;
-  max-height: 100%;
+  min-height: 100vh;
   font-family: 'DotGothic16', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.game code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 /* main */
@@ -210,7 +235,7 @@ html {
   display: none;
 }
 
-.game nav * {
+.game nav div {
   display: flex;
 }
 
@@ -220,9 +245,271 @@ html {
     display: block;
   }
 
-  .game nav li {
+  .game nav>ul>li {
     align-items: center;
     float: left;
     list-style-type: none;
+  }
+}
+
+.game footer{
+    padding-top: 30px;
+}
+
+.game footer p, a {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+@media screen and (min-width: 721px) {
+    .game footer p, a{
+        font-size: 1rem;
+  }
+}
+
+/* normal */
+.normal {
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: 'Kosugi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* main */
+.normal main {
+  text-align: center;
+  margin: auto 0 auto auto;
+  display: block;
+}
+
+.normal main h1,h2,h3 {
+  margin: auto;
+}
+
+.normal main h1 {
+  font-size: 30vw;
+  color: #212121;
+}
+
+.normal main h2 {
+  font-size: 1.5rem;
+  color: #b3b3b3;
+}
+
+.normal main .remaining-text {
+  display: flex;
+}
+
+.normal main h3 {
+  font-size: 1.7rem;
+  color: #b3b3b3;
+}
+
+.normal main .remaining{
+  font-size: 8vh;
+  color: #f02648;
+}
+
+@media screen and (min-width: 721px) {
+  .normal main h1 {
+    font-size: 27vw;
+  }
+  .normal main h2 {
+    font-size: 4rem;
+  }
+
+  .normal main .remaining{
+    font-size: 10vh;
+  }
+}
+
+/* header */
+.normal header p, li, ul{
+  margin: 0;
+  padding: 0;
+}
+
+.normal header {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.normal header .logo {
+  padding: 8px;
+  font-size: 50px;
+}
+
+@media screen and (min-width: 721px) {
+  .normal header {
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* nav */
+.normal nav {
+  display: none;
+}
+
+.normal nav div {
+  display: flex;
+}
+
+@media screen and (min-width: 721px) {
+  .normal nav {
+    display: 1 1 flex;
+    display: block;
+  }
+
+  .normal nav>ul>li {
+    align-items: center;
+    float: left;
+    list-style-type: none;
+  }
+}
+
+.normal footer{
+    padding-top: 30px;
+}
+
+.normal footer p, a {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+@media screen and (min-width: 721px) {
+    .normal footer p, a{
+        font-size: 1rem;
+  }
+}
+
+
+.reverse {
+  height: 100vh;
+  background-color: #212121;
+  font-family: 'Kosugi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* main */
+.reverse main {
+  text-align: center;
+  margin: auto 0 auto auto;
+  display: block;
+}
+
+.reverse main h1,h2,h3 {
+  margin: auto;
+}
+
+.reverse main h1 {
+  font-size: 30vw;
+  color: #ededed;
+}
+
+.reverse main h2 {
+  font-size: 1.5rem;
+  color: #b5b5b5;
+}
+
+.reverse main .remaining-text {
+  display: flex;
+}
+
+.reverse main h3 {
+  font-size: 1.7rem;
+  color: #b5b5b5;
+}
+
+.reverse main .remaining{
+  font-size: 8vh;
+  color: #f02648;
+}
+
+@media screen and (min-width: 721px) {
+  .reverse main h1 {
+    font-size: 27vw;
+  }
+  .reverse main h2 {
+    font-size: 4rem;
+  }
+
+  .reverse main .remaining{
+    font-size: 10vh;
+  }
+}
+
+/* header */
+.reverse header p, li, ul{
+  margin: 0;
+  padding: 0;
+}
+
+.reverse header {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reverse header .logo {
+  padding: 8px;
+  font-size: 50px;
+}
+
+@media screen and (min-width: 721px) {
+  .reverse header {
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* nav */
+.reverse nav {
+  display: none;
+}
+
+.reverse nav div {
+  display: flex;
+}
+
+@media screen and (min-width: 721px) {
+  .reverse nav {
+    display: 1 1 flex;
+    display: block;
+  }
+
+  .reverse nav>ul>li {
+    align-items: center;
+    float: left;
+    list-style-type: none;
+  }
+}
+
+.reverse footer{
+    padding-top: 30px;
+}
+
+.reverse footer p, a {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+@media screen and (min-width: 721px) {
+    .reverse footer p, a{
+        font-size: 1rem;
   }
 }

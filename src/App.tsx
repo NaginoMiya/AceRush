@@ -1,6 +1,6 @@
 import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
-import ChangeTheme from "./ChangeThemeButton";
+import ChangeThemeButton from "./ChangeThemeButton";
 import SetTargetTimeButton from "./SetTargetTimeButton";
 
 type Time = {
@@ -18,8 +18,6 @@ const App: FC = () => {
   const [remainSec, setRemainSec] = useState(
     21600 - DateTime.local().minute * 60 - DateTime.local().second
   );
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [theme, setTheme] = useState("");
 
@@ -111,10 +109,7 @@ const App: FC = () => {
               />
             </li>
             <li>
-              <ChangeTheme
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-              />
+              <ChangeThemeButton setTheme={setTheme} />
             </li>
           </ul>
         </nav>

@@ -30,14 +30,14 @@ type Props = {
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const themeOptions: string[] = ["rockn-roll", "game"];
+const themeOptions: string[] = ["normal", "reverse", "rockn-roll", "game"];
 
 const ChangeThemeButton: FC<Props> = ({ setTheme }) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(
     themeOptions.findIndex(
-      (x) => (localStorage.getItem("myTheme") ?? "rockn-roll") === x
+      (x) => (localStorage.getItem("myTheme") ?? "normal") === x
     )
   );
 

@@ -133,6 +133,19 @@ const App: FC = () => {
           {zeroPadding(DateTime.local().second)}
         </h3>
       </main>
+      <div className="smartphone-nav">
+        <ul>
+          <li>
+            <SetTargetTimeButton
+              setRemainSec={setRemainSec}
+              setTargetTime={setTargetTime}
+            />
+          </li>
+          <li>
+            <ChangeThemeButton setTheme={setTheme} />
+          </li>
+        </ul>
+      </div>
       <footer>
         <p>AceRushは目的の時間まで30分単位であと何回あるか可視化できるアプリです. 1時間だと長く感じるけど、30分だと短く感じるし思ったより回数が少ないよね. </p>
         <p>made by <a href="https://github.com/NagiNoMiya">@NagiNoMiya</a></p>

@@ -13,8 +13,21 @@ nav ul li {
     padding: 0 8px;
 }
 
-.menu-list-wraper {
-    display: block;
+.smartphone-nav>*{
+    display: inline-block;
+    margin:30px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.smartphone-nav>*>* {
+    margin: 20px 0;
+}
+
+@media screen and (min-width: 721px) {
+    .smartphone-nav {
+        display: none;
+    }
 }
 
 /* rock */

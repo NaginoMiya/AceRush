@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi&display=swap');
 
-html {
+.normal html {
   background-color: #f0f0f0;
   max-height: 100%;
 }
 
-body {
+.normal body {
   font-family: 'Kosugi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,79 +13,79 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+.normal code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 /* main */
-main {
+.normal main {
   text-align: center;
   margin: auto 0 auto auto;
   display: block;
 }
 
-main h1,h2,h3 {
+.normal main h1,h2,h3 {
   margin: auto;
 }
 
-main h1 {
+.normal main h1 {
   font-size: 30vw;
   color: #212121;
 }
 
-main h2 {
+.normal main h2 {
   font-size: 1.5rem;
   color: #b3b3b3;
 }
 
-main .remaining-text {
+.normal main .remaining-text {
   display: flex;
 }
 
-main h3 {
+.normal main h3 {
   font-size: 1.7rem;
   color: #b3b3b3;
 }
 
-main .remaining{
+.normal main .remaining{
   font-size: 8vh;
   color: #f02648;
 }
 
 @media screen and (min-width: 721px) {
-  main h1 {
+  .normal main h1 {
     font-size: 27vw;
   }
-  main h2 {
+  .normal main h2 {
     font-size: 4rem;
   }
 
-  main .remaining{
+  .normal main .remaining{
     font-size: 10vh;
   }
 }
 
 /* header */
-header p, li, ul{
+.normal header p, li, ul{
   margin: 0;
   padding: 0;
 }
 
-header {
+.normal header {
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-header .logo {
+.normal header .logo {
   padding: 8px;
   font-size: 50px;
 }
 
 @media screen and (min-width: 721px) {
-  header {
+  .normal header {
     padding: 10px;
     justify-content: space-between;
     align-items: center;
@@ -93,21 +93,21 @@ header .logo {
 }
 
 /* nav */
-nav {
+.normal nav {
   display: none;
 }
 
-nav * {
+.normal nav * {
   display: flex;
 }
 
 @media screen and (min-width: 721px) {
-  nav {
+  .normal nav {
     display: 1 1 flex;
     display: block;
   }
 
-  nav li {
+  .normal nav li {
     align-items: center;
     float: left;
     list-style-type: none;

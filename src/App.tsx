@@ -67,7 +67,7 @@ const App: FC = () => {
           </ul>
         </nav>
       </header>
-      <main className="background">
+      <main>
         <div className="remaining-text">
           <h2>
             目標の時間{targetTime.hour}:
@@ -90,7 +90,7 @@ const App: FC = () => {
       <button
         type="button"
         onClick={() => {
-          setTheme("game");
+          setTheme("reverse");
         }}
       >
         change

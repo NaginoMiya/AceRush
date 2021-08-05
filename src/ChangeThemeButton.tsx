@@ -1,15 +1,15 @@
-import { FC } from "react";
-
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-
-// Modal
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import { Fade, Grid } from "@material-ui/core/";
-
-// Button
+import { FC, useState, useRef } from "react";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 
 const ColorButton = withStyles((theme) => ({
@@ -26,92 +26,111 @@ const ColorButton = withStyles((theme) => ({
   },
 }))(Button);
 
-const useStyles = makeStyles((theme) => ({
-  input: {
-    width: "100%",
-    alignItems: "center",
-    fontSize: "30px",
-  },
-  // Modalのスタイルです.
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    width: "50%",
-  },
-  // IconButtonsのスタイルです.
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
 type Props = {
-  isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const SetTargetTimeButton: FC<Props> = ({ isModalOpen, setIsModalOpen }) => {
-  const classes = useStyles();
+const themeOptions: string[] = ["rockn-roll", "game"];
 
-  const OpenModal = () => setIsModalOpen(true);
-  const CloseModal = () => setIsModalOpen(false);
+const ChangeThemeButton: FC<Props> = ({ setTheme }) => {
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(
+    themeOptions.findIndex(
+      (x) => (localStorage.getItem("myTheme") ?? "rockn-roll") === x
+    )
+  );
+
+  const handleClick = () => {
+    //    console.info(`You clicked ${viewOptions[selectedIndex]}`);
+    setTheme(themeOptions[selectedIndex]);
+    localStorage.setItem("myTheme", themeOptions[selectedIndex]);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
+    setOpen(false);
+  };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
-    <>
-      <div className={classes.root}>
-        <ColorButton
-          aria-label="delete"
-          onClick={OpenModal}
+    <Grid container direction="column" alignItems="center">
+      <Grid item xs={12}>
+        <ButtonGroup
           variant="contained"
           color="primary"
+          ref={anchorRef}
+          aria-label="split button"
         >
-          ChangeTheama
-        </ColorButton>
-      </div>
-
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={isModalOpen}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-        disableBackdropClick
-      >
-        <Fade in={isModalOpen}>
-          <Grid container className={classes.paper} spacing={4}>
-            <Grid item xs={10}>
-              <input className={classes.input} placeholder="New Memo Title" />
-            </Grid>
-            <Grid item xs={2}>
-              <ColorButton
-                variant="contained"
-                onClick={CloseModal}
-                color="primary"
-                endIcon={<AddCircleOutlineIcon />}
-              >
-                Close.
-              </ColorButton>
-            </Grid>
-            <Grid item xs={12}>
-              <h2>Themeが選べる予定です</h2>
-            </Grid>
-          </Grid>
-        </Fade>
-      </Modal>
-    </>
+          <ColorButton onClick={handleClick}>
+            {themeOptions[selectedIndex]}
+          </ColorButton>
+          <ColorButton
+            aria-label="delete"
+            aria-controls={open ? "split-button-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-haspopup="menu"
+            onClick={handleToggle}
+            variant="contained"
+            color="primary"
+          >
+            <ArrowDropDownIcon />
+          </ColorButton>
+        </ButtonGroup>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            /* eslint-disable react/jsx-props-no-spreading */
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom",
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList id="split-button-menu">
+                    {themeOptions.map((option, index) => (
+                      <MenuItem
+                        key={option}
+                        selected={index === selectedIndex}
+                        onClick={(event) => handleMenuItemClick(event, index)}
+                      >
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </Grid>
+    </Grid>
   );
 };
 
-export default SetTargetTimeButton;
+export default ChangeThemeButton;

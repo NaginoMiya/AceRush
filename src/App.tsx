@@ -21,16 +21,6 @@ const App: FC = () => {
   );
 
   const [theme, setTheme] = useState("");
-
-  const changeTheme = () => {
-    if (theme === "rockn-roll") {
-      setTheme("game");
-      localStorage.setItem("myTheme", "game");
-    } else {
-      setTheme("rockn-roll");
-      localStorage.setItem("myTheme", "rockn-roll");
-    }
-  };
   const tick = (): void => {
     setRemainSec((t) => t - 1);
     if (remainSec < 0) {

@@ -1,5 +1,4 @@
 import { FC, useState, useRef } from "react";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -15,7 +14,6 @@ import { green } from "@material-ui/core/colors";
 const ColorButton = withStyles((theme) => ({
   root: {
     width: "80%",
-    display: "flex",
     color: theme.palette.getContrastText(green[500]),
     backgroundColor: green[500],
     "&:hover": {
@@ -72,65 +70,63 @@ const ChangeThemeButton: FC<Props> = ({ setTheme }) => {
   };
 
   return (
-    <Grid container direction="column" alignItems="center">
-      <Grid item xs={12}>
-        <ButtonGroup
+    <div>
+      <ButtonGroup
+        variant="contained"
+        color="primary"
+        ref={anchorRef}
+        aria-label="split button"
+      >
+        <ColorButton onClick={handleClick}>
+          {themeOptions[selectedIndex]}
+        </ColorButton>
+        <ColorButton
+          aria-label="delete"
+          aria-controls={open ? "menu-list-grow" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          aria-haspopup="menu"
+          onClick={handleToggle}
           variant="contained"
           color="primary"
-          ref={anchorRef}
-          aria-label="split button"
         >
-          <ColorButton onClick={handleClick}>
-            {themeOptions[selectedIndex]}
-          </ColorButton>
-          <ColorButton
-            aria-label="delete"
-            aria-controls={open ? "split-button-menu" : undefined}
-            aria-expanded={open ? "true" : undefined}
-            aria-haspopup="menu"
-            onClick={handleToggle}
-            variant="contained"
-            color="primary"
+          <ArrowDropDownIcon />
+        </ColorButton>
+      </ButtonGroup>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          /* eslint-disable react/jsx-props-no-spreading */
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
           >
-            <ArrowDropDownIcon />
-          </ColorButton>
-        </ButtonGroup>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            /* eslint-disable react/jsx-props-no-spreading */
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList id="split-button-menu">
-                    {themeOptions.map((option, index) => (
-                      <MenuItem
-                        key={option}
-                        selected={index === selectedIndex}
-                        onClick={(event) => handleMenuItemClick(event, index)}
-                      >
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </Grid>
-    </Grid>
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList id="menu-list-grow" className="menu-list-wraper">
+                  {themeOptions.map((option, index) => (
+                    <MenuItem
+                      key={option}
+                      selected={index === selectedIndex}
+                      onClick={(event) => handleMenuItemClick(event, index)}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </div>
   );
 };
 

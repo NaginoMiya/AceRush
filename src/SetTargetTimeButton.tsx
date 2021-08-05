@@ -70,7 +70,7 @@ const SetTargetTimeButton: FC<Props> = ({ setTargetTime, setRemainSec }) => {
       "myTargetTime",
       `${date.month}:${date.day}:${date.hour}:${date.minute}:${0}`
     );
-    console.log(localStorage.getItem("myTargetTime"));
+    // console.log(localStorage.getItem("myTargetTime"));
     setRemainSec(
       options[selectedIndex].diff(DateTime.local(), "second").seconds
     );

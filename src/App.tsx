@@ -2,6 +2,7 @@ import { useState, FC, useEffect } from "react";
 import { DateTime } from "luxon";
 import ChangeThemeButton from "./ChangeThemeButton";
 import SetTargetTimeButton from "./SetTargetTimeButton";
+import Logo from "./test6.png"
 
 type Time = {
   hour: number;
@@ -96,7 +97,7 @@ const App: FC = () => {
     <div className={theme}>
       <header>
         <div className="logo">
-          <img src={Logo} alt="test6.png" width="300" height="200"/>
+          <p><img src={Logo} alt="test6.png" width="90" height="60"/></p>
         </div>
         <nav>
           <ul>
